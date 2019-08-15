@@ -4,15 +4,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GitController {
+public class Git2Controller {
 
-    @GetMapping("/msg")
+    @GetMapping("/git2")
     public Object getMsg() {
         System.out.println("git msg!");
         return "hello git!";
     }
 
-    @GetMapping("/msg2")
+    @GetMapping("/git")
     public Object getMsg2() {
         System.out.println("git msg2!");
         return "hello git2!";

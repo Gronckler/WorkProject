@@ -11,6 +11,12 @@ public class GitController {
         System.out.println("git msg!");
         return "hello git!";
     }
+    
+    @GetMapping("/msg3")
+    public Object getMsg3(){
+        System.out.println("git msg3!");
+        return "hello git!";
+    }
 
     @GetMapping("/msg2")
     public Object getMsg2() {

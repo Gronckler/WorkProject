@@ -7,7 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class GitController {
 
     @GetMapping("/msg")
-    public Object getMsg(){
+    public Object getMsg() {
+        System.out.println("git msg!");
+        return "hello git!";
+    }
+
+    @GetMapping("/msg2")
+    public Object getMsg2() {
         System.out.println("git msg!");
         return "hello git!";
     }

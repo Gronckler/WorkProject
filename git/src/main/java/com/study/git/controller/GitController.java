@@ -9,7 +9,7 @@ public class GitController {
     @GetMapping("/msg")
     public Object getMsg() {
         System.out.println("git msg!");
-        return "hello git!12113";
+        return "hello git!123";
     }
 
     @GetMapping("/msg2")

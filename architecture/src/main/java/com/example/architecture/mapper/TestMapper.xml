@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.architecture.dao.ITestDao">
+
+    <resultMap id="userMap" type="com.example.architecture.pojo.User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <select id="count" resultType="int">
+        select count(1) from user
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.architecture.pojo.User">
+        insert into user(name,password,remark)
+             values  (#{name},
+                      #{password},
+                      #{remark,typeHandler=com.example.architecture.handler.ConverHandler}
+                      )
+    </insert>
+
+    <select id="queryUser" parameterType="com.example.architecture.pojo.User" resultMap="userMap">
+        select * from user where 1=1
+        <if test="id !=null and id !=''">and id = #{id}</if>
+        <if test="name !=null and name !=''">and name = #{name}</if>
+        <if test="password !=null and password != ''">and password = #{password}</if>
+
+    </select>
+
+</mapper>

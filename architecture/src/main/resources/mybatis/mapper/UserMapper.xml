@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指明当前xml对应的Mapper -->
+<mapper namespace="com.example.architecture.dao.UserMapper">
+    <select id="countUsers" resultType="Integer">
+      select count(*) from user;
+    </select>
+
+    <select id="queryUsers" resultType="com.example.architecture.pojo.User">
+      select * from user;
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.architecture.pojo.User">
+
+        insert into user (name,password,remark)
+             values (
+                       #{name},
+                       #{password},
+                       #{remark}
+                       )
+
+    </insert>
+
+    <select id="queryUser" parameterType="com.example.architecture.pojo.User" resultType="com.example.architecture.pojo.User">
+        select * from user where 1=1
+        <if test="id !=null and id !=''">and id = #{id}</if>
+        <if test="name !=null and name !=''">and name = #{name}</if>
+        <if test="password !=null and password != ''">and password = #{password}</if>
+
+    </select>
+
+    <select id="queryUserMap" parameterType="com.example.architecture.pojo.User" resultType="java.util.Map">
+        select * from user where 1=1
+        <if test="id !=null and id !=''">and id = #{id}</if>
+        <if test="name !=null and name !=''">and name = #{name}</if>
+        <if test="password !=null and password != ''">and password = #{password}</if>
+
+    </select>
+
+</mapper>
